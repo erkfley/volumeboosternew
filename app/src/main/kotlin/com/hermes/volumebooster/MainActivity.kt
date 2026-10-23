@@ -90,13 +90,22 @@ class MainActivity : ComponentActivity() {
 
     // ── Headset callback ──────────────────────────────────────────────
     private val deviceCallback = object : AudioDeviceCallback() {
-        override fun onAudioDeviceConnected(device: AudioDeviceInfo) {
-            if (isWiredHeadset(device.type)) handleHeadsetState(true)
+        override fun onAudioDevicesAdded(addedDevices: Array<AudioDeviceInfo>) {
+            for (device in addedDevices) {
+                if (isWiredHeadset(device.type)) {
+                    handleHeadsetState(true)
+                    break
+                }
+            }
         }
-        override fun onAudioDeviceDisconnected(device: AudioDeviceInfo) {
-            if (isWiredHeadset(device.type)) handleHeadsetState(false)
+        override fun onAudioDevicesRemoved(removedDevices: Array<AudioDeviceInfo>) {
+            for (device in removedDevices) {
+                if (isWiredHeadset(device.type)) {
+                    handleHeadsetState(false)
+                    break
+                }
+            }
         }
-    }
 
     // ── Shizuku permission-result listener ────────────────────────────
     private val shizukuPermissionListener =
@@ -344,7 +353,8 @@ class MainActivity : ComponentActivity() {
             // Attach to global output mix (session 0)
             enhancer = LoudnessEnhancer(0)
             enhancer?.let { fx ->
-                val maxGain = try { fx.getMaxGain() } catch (_: Exception) { 2000 }
+                // getMaxGain() is not part of the public API; use documented max (2000 mB)
+                val maxGain = 2000
                 val clampedGain = minOf(boostGain.value, maxGain)
 
                 fx.setTargetGain(clampedGain)

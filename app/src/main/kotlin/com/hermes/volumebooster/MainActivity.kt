@@ -2,6 +2,7 @@ package com.hermes.volumebooster
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
 import android.media.audiofx.LoudnessEnhancer
@@ -88,7 +89,7 @@ class MainActivity : ComponentActivity() {
     private val statusMsg: MutableState<String> = mutableStateOf("")
 
     // ── Headset callback ──────────────────────────────────────────────
-    private val deviceCallback = object : AudioManager.AudioDeviceCallback() {
+    private val deviceCallback = object : AudioDeviceCallback() {
         override fun onAudioDeviceConnected(device: AudioDeviceInfo) {
             if (isWiredHeadset(device.type)) handleHeadsetState(true)
         }
@@ -343,7 +344,7 @@ class MainActivity : ComponentActivity() {
             // Attach to global output mix (session 0)
             enhancer = LoudnessEnhancer(0)
             enhancer?.let { fx ->
-                val maxGain = try { fx.maxGain } catch (_: Exception) { 2000 }
+                val maxGain = try { fx.getMaxGain() } catch (_: Exception) { 2000 }
                 val clampedGain = minOf(boostGain.value, maxGain)
 
                 fx.setTargetGain(clampedGain)

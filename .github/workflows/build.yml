@@ -21,8 +21,10 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
 
+      - name: Print AndroidX dependency versions
+        run: ./gradlew :app:dependencies --configuration debugCompileClasspath --no-daemon | grep -E "androidx.activity|androidx.core|androidx.lifecycle"
       - name: Build Debug APK
-        run: ./gradlew assembleDebug --no-daemon
+        run: ./gradlew assembleDebug --no-daemon --no-build-cache --info
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4

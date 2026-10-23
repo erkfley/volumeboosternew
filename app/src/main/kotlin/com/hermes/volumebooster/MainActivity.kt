@@ -106,6 +106,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
 
     // ── Shizuku permission-result listener ────────────────────────────
     private val shizukuPermissionListener =

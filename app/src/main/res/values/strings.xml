@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Volume Booster</string>
+    <string name="headset_connected">Headset terhubung</string>
+    <string name="speaker_mode">Speaker HP</string>
+    <string name="boost_on">ON</string>
+    <string name="boost_off">OFF</string>
+    <string name="reset">Reset</string>
+    <string name="max_all">Max All</string>
+    <string name="shizuku_mode">Shizuku Mode</string>
+    <string name="shizuku_not_installed">Shizuku belum terpasang</string>
+    <string name="shizuku_request_permission">Mintakan Izin Shizuku</string>
+    <string name="shizuku_install_guide">Unduh Shizuku dari https://shizuku.rikka.app/</string>
+    <string name="shizuku_success">Berhasil! Batas volume aman dimatikan.</string>
+    <string name="shizuku_no_permission">Izin Shizuku belum diberikan.</string>
+    <string name="shizuku_not_running">Shizuku belum berjalan. Buka aplikasi Shizuku terlebih dahulu.</string>
+    <string name="enhancer_not_supported">Perangkat tidak mendukung LoudnessEnhancer</string>
+    <string name="toggle_boost_only_headset">Boost hanya saat headset</string>
+    <string name="gain_label">Gain: %1$.0f mB (%2$.1f dB)</string>
+    <string name="stream_music">Music</string>
+    <string name="stream_ring">Ring</string>
+    <string name="stream_alarm">Alarm</string>
+    <string name="stream_notification">Notif</string>
+    <string name="stream_system">System</string>
+    <string name="max_volume_set">Semua stream diatur ke volume maksimum</string>
+    <string name="disclaimer_text">Volume berlebihan dapat merusak pendengaran dan speaker.</string>

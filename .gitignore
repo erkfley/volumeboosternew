@@ -1,0 +1,19 @@
+# Gradle
+/.gradle/
+/app/build/
+
+# Local configuration
+/local.properties
+
+# IDE
+/.idea/
+*.iml
+/out/
+
+# Android files
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Gradle cache
+.gradle/
